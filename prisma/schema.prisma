@@ -1,0 +1,18 @@
+// schema.prisma
+datasource db {
+  provider = "postgresql" // or any other provider like "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model File {
+  id        Int      @id @default(autoincrement())
+  filename  String
+  mimetype  String
+  encoding  String
+  path      String
+  createdAt DateTime @default(now())
+}
